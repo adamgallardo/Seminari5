@@ -9,5 +9,4 @@ router.get('/:authorId', controller.readAuthor);
 router.get('/', controller.readAll);
 router.put('/:authorId', ValidateSchema(Schemas.author.update), controller.updateAuthor);
 router.delete('/:authorId', controller.deleteAuthor);
-
 export = router;

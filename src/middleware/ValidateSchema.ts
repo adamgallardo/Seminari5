@@ -32,14 +32,17 @@ export const Schemas = {
                 .regex(/^[0-9a-fA-F]{24}/)
                 .required(),
             title: Joi.string().required(),
-            category: Joi.string().required()
+            category: Joi.string().required(),
+            pages: Joi.number().required()
         }),
         update: Joi.object<IBook>({
             author: Joi.string()
                 .regex(/^[0-9a-fA-F]{24}/)
                 .required(),
             title: Joi.string().required(),
-            category: Joi.string().required()
+            category: Joi.string().required(),
+            pages: Joi.number().required()
+
         })
     }
 };

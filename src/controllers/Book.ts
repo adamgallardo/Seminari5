@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import Book from '../models/Book';
+import Author from '../models/Author';
 
 const createBook = (req: Request, res: Response, next: NextFunction) => {
-    const { author, title, category } = req.body;
+    const { author, title, category, pages } = req.body;
 
     const book = new Book({
         _id: new mongoose.Types.ObjectId(),
@@ -73,4 +74,13 @@ const deleteBook = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createBook, readBook, readAll, readAllA, updateBook, deleteBook };
+const getAuthor =(req: Request, res: Response, next: NextFunction) => {
+    const bookId = req.params.bookId;
+
+    return Author.findById(bookId)
+        .then((author) => (author ? res.status(200).json({ author }) : res.status(404).json({ message: 'not found' })))
+        .catch((error) => res.status(500).json({ error }));
+};
+
+
+export default { createBook, readBook, readAll, readAllA, updateBook, deleteBook, getAuthor };

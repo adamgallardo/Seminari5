@@ -10,5 +10,6 @@ router.get('/', controller.readAll);
 router.get('/get/projection', controller.readAllA);
 router.put('/:bookId', ValidateSchema(Schemas.book.update), controller.updateBook);
 router.delete('/:bookId', controller.deleteBook);
+router.get('/author/:authorId', controller.getAuthor);
 
 export = router;
